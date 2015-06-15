@@ -1,0 +1,14 @@
+javascriptkod
+http://stackoverflow.com/questions/24895155/creating-an-equalizer-with-javascript-audio-api
+
+inspirationsvideo
+https://vimeo.com/11335434
+
+SoS - Dropbox
+https://www.dropbox.com/sh/c7b87jqak1bw5do/AADP4YURMGpVr1orRdoXx51Na?dl=0
+
+Ljudfiltrering
+https://liuonline.sharepoint.com/sites/ks4/TNG015-2015VT/CourseDocuments/Ljudfiltrering%20med%20MATLAB.pdf
+
+Hörsel
+http://sv.wikipedia.org/wiki/H%C3%B6rsel
