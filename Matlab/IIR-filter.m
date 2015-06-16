@@ -1,6 +1,6 @@
 clc
 clear all;
-[y,fs]=wavread('Trubadur');
+[y,fs]=wavread('Lumus');
 % Korta av ljudfilen till 5 sekunder musik
 y = y(1:(5*fs));
 W=2*900/fs;
