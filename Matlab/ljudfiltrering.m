@@ -11,8 +11,7 @@ x = x(1:(5*fs));
 % Lyssna på den ostörda ljudfilen
 soundsc(x,fs);
 % Skapa en störning med frekvensen 800 Hz (godtyckligt vald frekvens).
-% Observera att samplingstak
-ten på störningsvektorn måste vara samma
+% Observera att samplingstakten på störningsvektorn måste vara samma
 % som för originalljudfilen. Amplituden är medvetet vald till ett lågt
 % värde för att inte överrösta musiken.
 t=0:(1/fs):5;
