@@ -1,26 +1,85 @@
+@font-face {
+   font-family: myFirstFont;
+   src: url(Lato-Hairline.ttf);
+}
 
-body{background:#245666; color: white;}
+div {
+   font-family: myFirstFont;
+}
+
+
+
+body{
+	background:#245666; 
+	color: white;
+	margin: 0px;
+	padding:0px;
+}
+
+
 h1{
 	color:#FFaaaa;
 	text-align: center;
-	font-family: Geneva, sans-serif;
+	font-family: myFirstFont;
 	width: 80%;
 	padding: 10px;
+	margin: 0px auto;
+
 }
 
-div#mp3_player{ width:700px; height:200px; background: #003447; padding: 0px; margin: 0px auto;}
-div#mp3_player > div > audio{ width:700px; background: #003447; float:left;}
+div#mp3_player{ 
+	width:700px; 
+	height:200px; 
+	background: #003447; 
+	padding: 0px; 
+	margin: 0px auto;
+	margin-top: 50px;
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
+	}
 
-div#EQcontrols{ width:700px; height:200px; background: #003447; padding: 0px; margin: 0px auto;}
-div#mp3_player > canvas{ width:700px; height:80%; background: #bafffd; float:left;}
+div#mp3_player > div > audio{ 
+	width:700px; 
+	background: #003447; 
+	float:left;
+}
+
+div#EQcontrols{ 
+	width:700px; 
+	height:200px; 
+	background: #003447; 
+	padding: 0px; 
+	margin: 0px auto;
+	border-bottom-right-radius: 3em;
+	border-bottom-left-radius: 3em;
+}
+
+div#mp3_player > canvas{ 
+	width:700px; 
+	height:80%; 
+	background: #bafffd; 
+	float:left;
+}
 
 button{
-	border-radius: 3px;
+	border-radius: 7px;
 	padding: 5px;
 	margin:5px;
 	border: 1px solid #ffffff;
 	background: #aaaaaa;
 }
+
+button:hover{
+	border: 1px solid #ffffff;
+	background: #bbbbbb;
+}
+
+button:active{
+
+	border: 1px solid #ffffff;
+	background: #999999;
+}
+
 #audio_box{
 	margin:0px;
 	padding:0px;
