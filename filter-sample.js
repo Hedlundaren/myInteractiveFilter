@@ -48,8 +48,6 @@ FilterSample.prototype.play = function() {
   // Connect source to filter, filter to destination.
   source.connect(filter);
   filter.connect(context.destination);
-  // Play!
-
 
   // Re-route audio playback into the processing graph of the AudioContext
   filter.connect(analyser);
