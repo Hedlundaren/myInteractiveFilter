@@ -1,3 +1,13 @@
-body{
-	background: pink;
+
+body{background:#001a23; color: white;}
+h1 {
+    color: #00ff00;
 }
+
+div#mp3_player{ width:500px; height:200px; background: #000447; padding: 5px; margin: 50px auto;}
+div#mp3_player > div > audio{ width:500px; background: #003447; float:left;}
+
+div#EQcontrols{ width:500px; height:200px; background: #003447; padding: 5px; margin: 50px auto;}
+div#mp3_player > canvas{ width:500px; height:85%; background: #bafffd; float:left; color: white;}
+
+

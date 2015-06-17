@@ -1,0 +1,27 @@
+
+body{background:#245666; color: white;}
+h1{
+	color:#FFaaaa;
+	text-align: center;
+	font-family: Geneva, sans-serif;
+	width: 80%;
+	padding: 10px;
+}
+
+div#mp3_player{ width:700px; height:200px; background: #003447; padding: 0px; margin: 0px auto;}
+div#mp3_player > div > audio{ width:700px; background: #003447; float:left;}
+
+div#EQcontrols{ width:700px; height:200px; background: #003447; padding: 0px; margin: 0px auto;}
+div#mp3_player > canvas{ width:700px; height:80%; background: #bafffd; float:left;}
+
+button{
+	border-radius: 3px;
+	padding: 5px;
+	margin:5px;
+	border: 1px solid #ffffff;
+	background: #aaaaaa;
+}
+#audio_box{
+	margin:0px;
+	padding:0px;
+}
