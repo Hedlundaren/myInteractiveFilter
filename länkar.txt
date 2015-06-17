@@ -1,5 +1,6 @@
 javascriptkod
 http://stackoverflow.com/questions/24895155/creating-an-equalizer-with-javascript-audio-api
+http://webaudioapi.com/samples/filter/
 
 inspirationsvideo
 https://vimeo.com/11335434

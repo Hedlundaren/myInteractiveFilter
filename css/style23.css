@@ -1,0 +1,953 @@
+body { 
+	margin: 0; 
+	overflow: hidden;
+	z-index: -1;
+}
+
+canvas { 
+	width: 100%; 
+	height: 100%; 
+	display: block; 
+}
+
+img{
+	margin: 0px;
+	padding: 0px;
+}
+
+audio{
+	margin: 0px;
+	padding: 0px;
+}
+/************* GENERAL GUI *********************/
+.edit-created-planet-container {
+	position: absolute;
+	top: 1%;
+	right: 10px;
+	max-width: 230px;
+	min-width: 210px;
+	min-height: 500px;
+	max-height: 510px;
+
+	background: rgb(10, 10, 10);
+	border: 1px solid rgba(100, 100, 100,0.6);
+	box-shadow:	
+		0pt 2px 5px rgba(10, 10, 30,  0.7),	
+		0px 0px 8px 5px rgba(100, 100, 100, 0.3) inset;
+	border-radius: 5px;
+	z-index: 22;
+}
+
+.planet-name-label {
+	padding-top: 40px; /*funkar inte*/
+}
+
+.edit-created-planet-label {
+	position:relative;
+	color: white;
+	margin-left: 20px;
+	margin-bottom: 10px;
+	font-family: 'BebasNeueRegular','Arial Narrow',Arial,sans-serif;
+	font-size: 15px;
+}
+
+#planet-name-field {
+	position: absolute;
+	top: 20px;
+	width: 70%;
+	left: 5%;
+	background: rgba(150, 150, 150, 0.9);	
+	margin-top: 1px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+	padding: 0px 0px 3px 16px;
+	border: 1px solid rgb(178, 178, 178);
+	box-sizing: content-box;
+	border-radius: 1px;
+	box-shadow: 0px 1px 4px 0px rgba(168, 168, 168, 0.6) inset;
+	transition: all 0.1s linear;
+
+}
+#planet-name-field:active,
+#planet-name-field:focus {
+	border: 1px solid rgba(91, 90, 90, 0.7);
+	background: rgba(255, 255, 255, 0.85);	
+	box-shadow: 1px 1px 4px 0px rgba(150, 150, 230, 0.9) inset;
+}
+
+
+#save-planet-container {
+	position: absolute;
+	bottom: 10px;
+	width: 100%;
+	height: 15%;
+	font-family: 'BebasNeueRegular','Arial Narrow',Arial,sans-serif;
+	font-size: 18px;
+}
+
+#save_planet_button {
+	position: absolute;
+	width: 66%;
+	height: 50px;
+	left: 17%;
+	background: rgb(30, 30, 30);
+	font-family: 'BebasNeueRegular','Arial Narrow',Arial,sans-serif;
+	color: rgb(245, 229, 215);
+	font-size: 18px;
+	border: 1px solid rgb(0, 0, 0);	
+	border-radius: 3px;	
+	box-shadow:	
+		0pt 2px 5px rgba(10, 10, 30,  0.7),	
+		0px 0px 6px 5px rgba(100, 100, 100, 0.3) inset;
+	transition: all 0.1s linear;
+}
+#save_planet_button:hover {
+	background: rgba(194, 234, 237, 1);
+	color: rgb(10, 10, 10);
+}
+#save_planet_button:active,
+#save_planet_button:focus {
+	background: rgb(40, 137, 154);
+	position: relative;
+	top: 1px;
+	border: 1px solid rgb(12, 76, 87);	
+	box-shadow: 0px 1px 6px 4px rgba(0, 0, 0, 0.2) inset;
+}
+
+/* selectable-grid */
+#texture-container {
+	position: relative;
+	left: 25px;
+	top: 20px;
+	font-family: 'BebasNeueRegular','Arial Narrow',Arial,sans-serif;
+}
+#texture-label {
+	position: absolute;
+	color: white;
+	padding-bottom: 1px;
+}
+
+#create-planet-texture-label {
+	position: relative;
+	top: 10px;
+	left: 20px;
+	margin-bottom: 10px; /*push down imgs*/
+	color: white;
+	font-family: 'BebasNeueRegular','Arial Narrow',Arial,sans-serif;
+}
+
+#create-planet-texture-container {
+	position: absolute;
+	min-width: 90%;
+	/*max-width: 95%;*/
+	max-height: 150px;
+	left: 7%;
+	max-height: 30%;
+}
+#create-planet-texture-container img {
+	/*float: right;*/
+	position: relative;
+	margin: 3px;
+	max-width: 50px;
+	/*max-height: 80px;*/
+}
+#create-planet-texture-container img:hover {
+	margin: 0;
+	border: 3px solid rgba(255, 255, 255, 0.9);
+	cursor: pointer;
+}
+
+#create-planet-texture-container img:active {
+	margin: 0;
+	border: 3px solid rgba(200, 200, 255, 0.8);
+	cursor: pointer;
+}
+
+.tex-img-label {
+	position: absolute;
+	color: white;
+	font-family: 'BebasNeueRegular','Arial Narrow',Arial,sans-serif;
+	font-size: 10px;
+	text-align: center;
+	margin-left: 5px;
+}
+
+#add-button-container {
+	position:absolute;
+	top: 10px;
+	right: 10px;
+	min-height: 90px;
+	height: 10%;
+	min-width: 60px;
+	max-width: 100px;
+	width: 8%;
+	cursor: pointer;	
+}
+
+#sound-button-container {
+	position:fixed;
+	bottom: 110px;
+	right: 10px;
+	height: 90px;
+	min-height: 80px;
+	min-width: 60px;
+	max-width: 100px;
+	width: 8%;
+	cursor: pointer;	
+}
+
+#sound-button-container button {
+	width: 100%;
+	height: 100%;
+	background: rgb(30, 30, 30);
+	padding: 10px 5px;
+	margin-bottom: 10px; /*push down edit-planet-button*/
+	font-family: 'BebasNeueRegular','Arial Narrow',Arial,sans-serif;
+	color: rgb(245, 229, 215);
+	font-size: 18px;	
+	border: 1px solid rgb(0, 0, 0);	
+	border-radius: 7px;	
+	transition: all 0.1s linear;
+}
+#sound-button-container button:hover {
+	background: rgba(194, 234, 237, 1);
+	color: rgb(10, 10, 10);
+}
+#sound-button-container button:active,
+#sound-button-container button:focus {
+	
+	background: rgb(40, 137, 154);
+	position: relative;
+	top: 1px;
+	border: 1px solid rgb(12, 76, 87);	
+	box-shadow: 0px 1px 6px 4px rgba(0, 0, 0, 0.2) inset;
+}
+
+.add-edit-planet-text {
+	margin: 0;
+	padding: 5px 0 10px 0;
+	font-size: 15px;
+	font-family: 'BebasNeueRegular','Arial Narrow',Arial,sans-serif;
+}
+
+#add-button-container button {
+	width: 100%;
+	height: 100%;
+	background: rgb(30, 30, 30);
+	padding: 10px 5px;
+	margin-bottom: 10px; /*push down edit-planet-button*/
+	font-family: 'BebasNeueRegular','Arial Narrow',Arial,sans-serif;
+	color: rgb(245, 229, 215);
+	font-size: 18px;	
+	border: 1px solid rgb(0, 0, 0);	
+	border-radius: 7px;	
+	transition: all 0.1s linear;
+}
+#add-button-container button:hover {
+	background: rgba(194, 234, 237, 1);
+	color: rgb(10, 10, 10);
+	transition: all 0.1s linear;
+}
+#add-button-container button:active,
+#add-button-container button:focus {
+	background: rgb(40, 137, 154);
+	position: relative;
+	top: 1px;
+	border: 1px solid rgb(12, 76, 87);	
+	box-shadow: 0px 1px 6px 4px rgba(0, 0, 0, 0.2) inset;
+}
+
+.planet_radius_slider,
+.planet_size_slider,
+.planet_rotation_slider {
+	position: relative;
+	width: 80%;
+	heiht: 50%;
+	left: 20px;
+}
+
+.planet-radius-container{
+	position: aboslute;
+	margin-top: 30px;
+}
+.planet-radius-container,
+.planet-size-container,
+.planet-rotation-container{
+	min-height: 7%;
+}
+
+.meteor-check-container {
+	position: relative;
+	margin-top: 8%;
+	left: 20px;
+}
+.meteor-check-label {
+	color: white;
+	margin-left: 10px;
+	font-family: 'BebasNeueRegular','Arial Narrow',Arial,sans-serif;
+	font-size: 15px;
+}
+
+/************* LOGIN/REGISTER GUI **************/
+#account-gui-container {
+	position:absolute;
+	top: 0%;
+	height: 17%;
+	width: 14%;
+	max-height: 110px;
+	max-width: 190px;
+	min-height: 90px;
+	min-width: 160px;
+	z-index: 1;
+}
+
+/* all input except submit and checkbox */
+#account-gui-wrapper input:not([type="checkbox"]) {
+	width: 80%;
+	background: rgba(150, 150, 150, 0.9);	
+	margin-top: 1px;
+	margin-bottom: 4px;
+	margin-left: 10px;
+	padding: 0px 0px 3px 16px;
+	border: 1px solid rgb(178, 178, 178);
+	box-sizing: content-box;
+	border-radius: 1px;
+	box-shadow: 0px 1px 4px 0px rgba(168, 168, 168, 0.6) inset;
+	transition: all 0.1s linear;
+}
+#account-gui-wrapper input:not([type="checkbox"]):active,
+#account-gui-wrapper input:not([type="checkbox"]):focus {
+	border: 1px solid rgba(91, 90, 90, 0.7);
+	background: rgba(255, 255, 255, 0.85);	
+	box-shadow: 1px 1px 4px 0px rgba(150, 150, 230, 0.9) inset;
+}
+
+/*styling both submit buttons */
+#account-gui-wrapper p.button input {
+	width: 60%;
+	cursor: pointer;	
+	background: rgb(30, 30, 30);
+	padding:  4px  2px;
+	font-family: 'BebasNeueRegular','Arial Narrow',Arial,sans-serif;
+	color: rgb(245, 229, 215);
+	font-size: 13px;	
+	border: 1px solid rgb(0, 0, 0);	
+	border-radius: 7px;	
+	/*box-shadow:
+		0px 1px 6px 4px rgba(0, 0, 0, 0.07) inset,
+		0px 0px 0px 2px rgb(254, 254, 254),
+		0px 1px 1px 3px rgb(210, 210, 210);*/
+	transition: all 0.1s linear;
+}
+#account-gui-wrapper p.button input:hover {
+	background: rgba(194, 234, 237, 1);
+	color: rgb(10, 10, 10);
+}
+#account-gui-wrapper p.button input:active,
+#account-gui-wrapper p.button input:focus {
+	background: rgb(40, 137, 154);
+	position: relative;
+	top: 1px;
+	border: 1px solid rgb(12, 76, 87);	
+	box-shadow: 0px 1px 6px 4px rgba(0, 0, 0, 0.2) inset;
+}
+p.login.button,
+p.register.button {
+	text-align: center;
+	margin: 2px 0;
+}
+
+#register,
+#login {
+	position: absolute;
+	left: 5%;
+	height: 100%;
+	width: 100%;	
+	padding: 18px 6% 60px 6%;
+	/*margin: 0 0 0 0;*/
+	background: rgb(10, 10, 10);
+	border: 1px solid rgba(100, 100, 100,0.6);
+	box-shadow:	
+		0pt 2px 5px rgba(10, 10, 30,  0.7),	
+		0px 0px 8px 5px rgba(100, 100, 100, 0.3) inset;
+	border-radius: 5px;
+}
+
+#login {
+	z-index: 22;
+}
+
+#register {
+	z-index: 21;
+	opacity: 0;
+}
+
+.uname_label,
+.pass_label {
+	color: white;
+	margin-left: 10px;
+	font-family: 'BebasNeueRegular','Arial Narrow',Arial,sans-serif;
+	font-size: 13px;
+}
+
+p.change_link{
+	color: rgb(255, 255, 255);
+	padding: 0px 5px 0px 0px;
+	margin-top: 1px;
+	font-size: 13px;
+	font-family: 'BebasNeueRegular','Arial Narrow',Arial,sans-serif;
+	text-align: center;
+}
+
+#account-gui-wrapper p.change_link a {
+	display: inline-block;
+	font-family: 'BebasNeueRegular','Arial Narrow',Arial,sans-serif;
+	padding:  2px  3px;
+	color: rgb(150, 250, 200);
+	margin-left: 5px;	
+	transition: all 0.1s  linear;
+}
+#account-gui-wrapper p.change_link a:hover {
+	color: rgb(30, 30, 30);
+	background: rgba(219, 255, 237, 5);
+	/*border: 1px solid rgb(50, 50, 50);*/
+	/*border-radius: 7px;*/
+}
+#account-gui-wrapper p.change_link a:active{
+	position: relative;
+	top: 1px;
+}
+
+/**** advanced input styling ****/
+/* placeholder */
+::-webkit-input-placeholder  { 
+	color: rgb(190, 188, 188); 
+	font-style: italic;
+}
+input:-moz-placeholder,
+textarea:-moz-placeholder{ 
+	color: rgb(190, 188, 188);
+	font-style: italic;
+} 
+input {
+  outline: none;
+}
+
+/*logged in user menu*/
+#user_menu {
+	position: absolute;
+	/*top: 0px;*/
+	bottom: 0px;
+	right: 10px;
+	min-height: 40px;
+	max-height: 40px;
+	min-width: 170px;
+	max-width: 185px;
+
+	padding: 0% 1% 0px 0%;
+	background: rgb(10, 10, 10);
+	border: 1px solid rgba(100, 100, 100,0.6);
+	box-shadow:	
+		0pt 2px 5px rgba(10, 10, 30,  0.7),	
+		0px 0px 8px 5px rgba(100, 100, 100, 0.3) inset;
+	border-radius: 5px;
+	z-index: 21;
+}
+#user-text-container {
+	position: absolute;
+	width: 50%;
+	height: 100%;
+}
+#user-button-container {
+	position: absolute;
+	right: 0px;
+	width: 50%;
+	height: 100%;
+}
+p.user_info {
+	height: 100%;
+	width: 100%;
+	margin: 10px 0px 0px 20px;
+	color: rgb(255, 255, 255);
+	font-size: 15px;
+	font-family: 'BebasNeueRegular','Arial Narrow',Arial,sans-serif;
+	text-align: left;
+}
+#user_menu button {		/*logout button*/
+	position: absolute;
+	width: 65%;
+	max-height: 70%;
+	margin: 7px 0px 0px 20px;
+	cursor: pointer;	
+	background: rgb(30, 30, 30);
+	padding:  4px  2px;
+	font-family: 'BebasNeueRegular','Arial Narrow',Arial,sans-serif;
+	color: rgb(245, 229, 215);
+	font-size: 13px;	
+	border: 1px solid rgb(0, 0, 0);	
+	border-radius: 7px;	
+	transition: all 0.1s linear;
+}
+#user_menu button:hover {
+	background: rgba(194, 234, 237, 1);
+	color: rgb(10, 10, 10);
+}
+#user_menu button:active,
+#user_menu button:focus {
+	background: rgb(40, 137, 154);
+	position: relative;
+	top: 1px;
+	border: 1px solid rgb(12, 76, 87);	
+	box-shadow: 0px 1px 6px 4px rgba(0, 0, 0, 0.2) inset;
+}
+
+#toregister:target ~ #account-gui-wrapper #login,
+#tologin:target ~ #account-gui-wrapper #register{
+	-webkit-animation-name: fadeOutLeft;
+	-moz-animation-name: fadeOutLeft;
+	-ms-animation-name: fadeOutLeft;
+	-o-animation-name: fadeOutLeft;
+	animation-name: fadeOutLeft;
+}
+
+/*** planet info ***/
+#planet-info-container{
+	position: absolute;
+	top: 250px;
+	right: 10px;
+	height: 65px;
+	min-width: 170px;
+	/*max-width: 100px;	*/
+	background: rgb(10, 10, 10);
+	border: 1px solid rgba(100, 100, 100,0.6);
+	box-shadow:	
+		0pt 2px 5px rgba(10, 10, 30,  0.7),	
+		0px 0px 8px 5px rgba(100, 100, 100, 0.3) inset;
+	border-radius: 5px;
+}
+#planet-info-table{
+	border: none;
+	width: 10%;
+	height: 50%;
+}
+#planet-info-table td{
+	padding-left: 1px;
+	padding-right: 2px;
+	float: right;
+}
+
+
+#planet-info-owner,
+#planet-info-name{
+	position: absolute;
+	color: white;
+	margin: 10px 10px 10px 20px;
+	font-family: 'BebasNeueRegular','Arial Narrow',Arial,sans-serif;
+	font-size: 15px;
+	text-align: right;
+}
+
+/*#planet-info-name{
+	border-bottom:1px solid #EEE;
+}
+#planet-info-owner{
+	border-top:1px solid #CCC;
+}*/
+
+/***** VIEWS ******/
+#jump-system-container {
+	position: absolute;
+	bottom: 20px;
+	left: 42%;
+	max-width: 16%;
+	min-width: 200px;
+	height: 40px;
+}
+
+#jump-system-button {
+	width: 100%;
+	height: 100%;
+	background: rgb(30, 30, 30);
+	color: rgb(245, 229, 215);
+	padding: 10px 15px;
+	border: 1px solid rgb(0, 0, 0);	
+	border-radius: 3px;	
+	transition: all 0.1s linear;
+}
+#jump-system-button:hover {
+	background: rgba(194, 234, 237, 1);
+	color: rgb(10, 10, 10);
+}
+#jump-system-button:active,
+#jump-system-button:focus {
+	background: rgb(40, 137, 154);
+	position: relative;
+	top: 1px;
+	border: 1px solid rgb(12, 76, 87);	
+	box-shadow: 0px 1px 6px 4px rgba(0, 0, 0, 0.2) inset;
+}
+
+#jump-system-container i {
+	padding: 0 5%;
+}
+
+#jump-planet-moon-container {
+	position: absolute;
+	top: 10px;
+	right: 120px;
+	width: 30%;
+	heigth: 40px;
+}
+
+.jump-planet-moon-buttons {
+	float: right;
+	/*min-width: 45px;*/
+	/*width: 20%;*/
+	width: 100px;
+	heigth: 100%;
+	padding: 15px 0px 15px 0px;
+	margin: 0 0px;
+	background: rgb(30, 30, 30);
+	color: rgb(245, 229, 215);
+	border: 1px solid rgb( 0,  0, 0);	
+	border-radius: 7px;	
+	transition: all 0.1s linear;
+}
+.jump-planet-moon-buttons:hover {
+	background: rgba(194, 234, 237, 1);
+	color: rgb(10, 10, 10);
+	transition: all 0.1s linear;
+}
+.jump-planet-moon-buttons:active,
+.jump-planet-moon-buttons:focus {
+	background: rgb(40, 137, 154);
+	position: relative;
+	top: 1px;
+	border: 1px solid rgb(12, 76, 87);	
+	box-shadow: 0px 1px 6px 4px rgba(0, 0, 0, 0.2) inset;
+}
+
+.edit-created-moon-label {
+	color: white;
+	margin-left: 10px;
+	font-family: 'BebasNeueRegular','Arial Narrow',Arial,sans-serif;
+	font-size: 15px;
+}
+
+/**** EDIT PLANET ****/
+/*#edit-planet-button {
+	position: absolute;
+	top: 150px;
+	right: 10px;
+	max-width: 100px;
+	cursor: pointer;	
+	background: rgb(30, 30, 30);
+	padding: 20px 10px;
+	font-family: 'BebasNeueRegular','Arial Narrow',Arial,sans-serif;
+	color: rgb(245, 229, 215);
+	font-size: 18px;	
+	border: 1px solid rgb(0, 0, 0);	
+	border-radius: 7px;
+	transition: all 0.1s linear;
+	cursor: pointer;
+}
+#edit-planet-button:hover {
+	background: rgb(30, 30, 30);
+	color: rgb(245, 229, 215);
+}
+#edit-planet-button:active,
+#edit-planet-button:focus {
+	background: rgb(40, 137, 154);
+	position: relative;
+	top: 1px;
+	border: 1px solid rgb(12, 76, 87);	
+	box-shadow: 0px 1px 6px 4px rgba(0, 0, 0, 0.2) inset;
+}*/
+
+#edit-planet-tabs {
+	position: absolute;
+	top: 1%;
+	right: 10px;
+	max-width: 200px;
+	min-width: 190px;
+	min-height: 500px;
+}
+
+
+/* overrides jquery-ui, there's more in jquery-ui.css*/
+.ui-tabs .ui-tabs-nav {
+	margin: 20px;
+	padding: .5em .5em 0;
+}
+.ui-tabs .ui-tabs-nav li {
+	font-size: 12px;
+	text-decoration: none;
+	list-style: none;
+	float: left;
+	position: relative;
+	top: 0px;
+	margin: 4px .2em 0 0;
+	padding: 0 2px 0 2px;
+	border-bottom-width: 0;
+	white-space: nowrap;
+}
+.ui-tabs .ui-tabs-nav .ui-tabs-anchor {
+    float: left;
+    padding: 8px 5px;
+    text-decoration: none;
+}
+
+#edit-texture-image-container{
+	padding-bottom: 230px;
+}
+#edit-texture-image-container img {
+	width: 40px;
+	height: 40px;
+	margin: 5px;
+}
+
+#edit-texture-image-container img:hover {
+    margin: 0px;
+	border: 5px solid rgba(255, 255, 255, 0.7);
+	border-radius: 3px;
+	-webkit-filter: brightness(150%);
+	cursor: pointer;
+}
+
+#edit-existing-planet-moon-container {
+	position: absolute;
+	top: 1%;
+	right: 10px;
+	max-width: 230px;
+	min-width: 210px;
+	min-height: 380px;
+
+	background: rgb(10, 10, 10);
+	border: 1px solid rgba(100, 100, 100,0.6);
+	box-shadow:	
+		0pt 2px 5px rgba(10, 10, 30,  0.7),	
+		0px 0px 8px 5px rgba(100, 100, 100, 0.3) inset;
+	border-radius: 5px;
+	z-index: 22;
+}
+
+#add-moon-button {
+	position: relative;
+	width: 75%;
+	left: 12.5%;
+	top: 10px;
+	cursor: pointer;	
+	background: rgb(30, 30, 30);
+	padding: 15px 5px;
+	font-family: 'BebasNeueRegular','Arial Narrow',Arial,sans-serif;
+	color: rgb(245, 229, 215);
+	font-size: 18px;	
+	border: 1px solid rgb(0, 0, 0);
+	border-radius: 7px;
+	transition: all 0.1s linear;
+}
+#add-moon-button:hover {
+	background: rgba(194, 234, 237, 1);
+	color: rgb(10, 10, 10);
+}
+#add-moon-button:active {
+	background: rgb(40, 137, 154);
+	position: relative;
+	top: 1px;
+	border: 1px solid rgb(12, 76, 87);	
+	box-shadow: 0px 1px 6px 4px rgba(0, 0, 0, 0.2) inset;
+}
+
+#moon-properties-container {
+	position: relative;
+	top: 20px;
+	margin-bottom: 20px;
+	width: 80%;
+	left: 20px;
+}
+
+.delete-planet-button {
+	background: rgb(100, 30, 30);
+}
+
+.delete-planet-button,
+.edit-done-button {
+	position: relative;
+	left: 10%;
+	width:80%;
+	top: 20px;
+	color: rgb(245, 229, 215);
+	min-height: 70px;
+	font-family: 'BebasNeueRegular','Arial Narrow',Arial,sans-serif;
+	font-size: 18px;
+	border: 1px solid rgb( 0,  0, 0);	
+	border-radius: 3px;	
+	transition: all 0.1s linear;
+}
+.edit-done-button {
+	background: rgb(30, 30, 30);
+	margin: 0 0% 20px 0%;
+}
+.delete-planet-button:hover,
+.edit-done-button:hover {
+	background: rgba(194, 234, 237, 1);
+	color: rgb(10, 10, 10);
+}
+.delete-planet-button:active,
+.delete-planet-button:focus,
+.edit-done-button:active,
+.edit-done-button:focus {
+	background: rgb(40, 137, 154);
+	position: relative;
+	top: 1px;
+	border: 1px solid rgb(12, 76, 87);	
+	box-shadow: 0px 1px 6px 4px rgba(0, 0, 0, 0.2) inset;
+}
+
+.room-container {
+	position: absolute;
+	bottom: 5px;
+	right: 220px;
+	min-width: 80px;
+	width: 7%;
+	max-width: 100px;
+	background: rgb(30, 30, 30);
+	border: 1px solid rgb(0, 0, 0);	
+	border-radius: 7px;	
+	height: 30px;
+	font-size: 15px;
+	transition: all 0.1s linear;
+}
+.top-menu-main{
+  position: relative;
+  float: left;
+  list-style: none;
+  margin: 0;
+}
+.top-menu-main a {
+	display: block;
+	text-decoration: none;
+	font-family: 'BebasNeueRegular','Arial Narrow',Arial,sans-serif;
+	color: rgb(245, 229, 215);
+	padding: 5px 20%;
+	text-align: center;
+}
+ul.room-menu {
+	bottom: 27px;
+	cursor: pointer;
+	display: none;
+	min-width: 100%;
+	position: absolute;
+	padding: 0px;
+	margin: 0px;
+	white-space: nowrap;
+	-moz-box-shadow: 0 0 8px #333;
+	-webkit-box-shadow: 0 0 8px #333;
+	box-shadow: 0 0 8px #333;
+}
+ul.room-menu li {
+	margin: 0px;
+	padding: 10px 30px;
+	background: rgb(0, 0, 0);
+	font-family: 'BebasNeueRegular','Arial Narrow',Arial,sans-serif;
+	color: #fff;
+	white-space: nowrap;
+	list-style: none;
+}
+ul.room-menu li:hover {
+	background: rgb(30, 30, 30);
+}
+
+/******** PLANET BUILD GUI ********/
+#accordion-container {	/*same as edit-planet-tabs*/
+	position: absolute;
+	top: 1%;
+	right: 10px;
+	max-width: 200px;
+	min-width: 190px;
+	min-height: 450px;
+	
+}
+
+#insideBygg img {
+	padding: 0px;
+	margin: 0px;
+	opacity: 0.4;
+	background: rgb(10,10,10);
+
+}
+
+#build-image-container{
+	background: rgb(40,40,40);
+	padding: 0px;
+	margin: 0px;
+	padding-bottom: 220px;
+
+	
+}
+#build-image-container img {
+
+	width: 65px;
+	height: 65px;
+	margin: 4px;
+	padding: 0px;
+
+}
+
+#build-image-container img:hover {
+	margin: 2px;
+	padding: 0px;
+	border: 2px solid rgba(255, 255, 255, 0.4);
+	cursor: pointer;
+	opacity: 0.75;
+}
+
+#build-image-container img:active {
+	margin: 2px;
+	padding: 0px;
+	border: 2px solid rgba(200, 200, 255, 0.4);
+	cursor: pointer;
+	opacity: 0.6;
+}
+
+#insideBygg img:hover {
+    opacity: 1.0;
+}
+
+/*animations*/
+#toregister:target ~ #account-gui-wrapper #register,
+#tologin:target ~ #account-gui-wrapper #login {
+	z-index: 22;
+	-webkit-animation-name: fadeInLeft;
+	-moz-animation-name: fadeInLeft;
+	-ms-animation-name: fadeInLeft;
+	-o-animation-name: fadeInLeft;
+	animation-name: fadeInLeft;
+	-webkit-animation-delay: .1s;
+	-moz-animation-delay: .1s;
+	-o-animation-delay: .1s;
+	-ms-animation-delay: .1s;
+	animation-delay: .1s;
+}
+
+.animate{
+	-webkit-animation-duration: 0.4s;
+	-webkit-animation-timing-function: ease;
+	-webkit-animation-fill-mode: both;
+	
+	-moz-animation-duration: 0.4s;
+	-moz-animation-timing-function: ease;
+	-moz-animation-fill-mode: both;
+	
+	-o-animation-duration: 0.4s;
+	-o-animation-timing-function: ease;
+	-o-animation-fill-mode: both;
+	
+	-ms-animation-duration: 0.4s;
+	-ms-animation-timing-function: ease;
+	-ms-animation-fill-mode: both;
+	
+	animation-duration: 0.4s;
+	animation-timing-function: ease;
+	animation-fill-mode: both;
+}
